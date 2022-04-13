@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Transaksi;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -25,11 +26,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function() {
     Route::name('admin.')->prefix('admin')->group(function () {
-        Route::resource('user', UserController::class,);
+        Route::resource('user', UserController::class);
     });
     
-    Route::name('manajer.')->prefix('manajer')->group(function() {
+    Route::name('manajer.')->prefix('manajer')->group(function () {
         Route::resource('menu', MenuController::class);
+        Route::get('laporan', function(){
+            $transaksis = Transaksi::all();
+            return view('manajer.laporan.index',compact('transaksis'));
+        })->name('laporan');
     });
     
     Route::name('kasir.')->prefix('kasir')->group(function() {

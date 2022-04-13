@@ -14,7 +14,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::latest()->paginate(8);
+        $menus = Menu::latest('updated_at')->paginate(8);
 
         return view('manajer.menu.index', compact('menus'))
             ->with('i', (request()->input('page', 1) - 1) * 8);

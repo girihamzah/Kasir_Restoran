@@ -17,7 +17,8 @@ class CreateMenusTable extends Migration
             $table->id();
             $table->string('nama_menu');
             $table->integer('harga');
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
+            $table->enum('kategori', ['makanan', 'minuman']);
             $table->integer('ketersediaan');
             $table->timestamps();
         });

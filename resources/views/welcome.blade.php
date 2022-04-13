@@ -1,10 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/line-icons.css') }}" rel="stylesheet" />
+
+    <title>Coffena Shop - Landing Page</title>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+    
+    {{-- Navbar --}}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#" >Coffena Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#menu">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#masuk">Masuk</a>
+                </li>
+                @auth()
+                        @if(Auth::user()->role == 'admin')
+                            <li class="nav-item"><a class="nav-link " href="{{ route('admin.registrasi.index') }}">Home</a></li>
+                        @elseif(Auth::user()->role == 'kasir')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('kasir.transaksi.index') }}">Home</a></li>
+                        @elseif(Auth::user()->role == 'manajer')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('manajer.dashboard') }}">Home</a></li>
+                        @endif
+                    @else
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">Login</a></li>
+                    @endauth
+            </ul>
+        </div>
+        </div>
+    </nav>
+    {{-- Penutup Navbar --}}
+
+    {{-- Hero --}}
+    <section id="home" class="bg-cover hero-section" style="background-image: url(../img/home-img.jpeg)">
+        <div class="overlay"></div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-3">Coffena Shop</h1>
+                    <p>Web Coffena Responsive untuk memanajemen Coffena Bisa Ngopi dengan Mudah.</p>
+                    <a class="btn btn-primary" href="#">Ayo Mulai</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- Penutup hero --}}
+
+    {{--  About --}}
+    <section class="about-section text-center" id="about">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4"> Total Transaksi Dalam 1 Minggu Terakhir</h2>
+                    <p class="text-white-50">
+                        Cafe Bisa Ngopi dibuat untuk memudahkan user untuk mengelola web. Ada 3 Jenis User; Admin, Kasir, dan Manajer.
+                    </p>
+                </div>
+            </div>
+            <img class="img-fluid" src="{{ asset('img') }}/bg-coffee.png" alt="..." />
+        </div>
+    </section>
+    {{-- Penutup About --}}
+
+    {{-- Menu --}}
+    <section class="menu" id="menu">
+        <h1 class="heading"><span>Menu</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="{{ asset('img') }}/menu-1.png" alt="">
+                <h3>tasty and healty</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+            <div class="box">
+                <img src="{{ asset('img') }}/menu-2.png" alt="">
+                <h3>tasty and healty</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+            <div class="box">
+                <img src="{{ asset('img') }}/menu-3.png" alt="">
+                <h3>tasty and healty</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+            <div class="box">
+                <img src="{{ asset('img') }}/menu-4.png" alt="">
+                <h3>tasty and healty</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+            <div class="box">
+                <img src="{{ asset('img') }}/menu-5.png" alt="">
+                <h3>tasty and healty</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+            <div class="box">
+                <img src="{{ asset('img') }}/menu-6.png" alt="">
+                <h3>tasty and healty</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+        </div>
+    </section>
+    {{-- Penutup Menu --}}
+
+    <section class="signup-section" id="signup">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-10 col-lg-8 mx-auto text-center">
+                    <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                    <h2 class="text-white mb-5">Ayo Mulai. Sekarang!</h2>
+                    <form class="form-signup">
+                        <div class="row input-group-newsletter">
+                            <div class="col text-center">
+                                @if (Route::has('login'))
+                                    @auth()
+                                        @if(Auth::user()->role == 'admin')
+                                            <a href="{{ route('admin.registrasi.index') }}"><button class="btn btn-primary" type="button">Masuk</button></a>
+                                        @elseif(Auth::user()->role == 'kasir')
+                                            <a href="{{ route('kasir.transaksi.index') }}"><button class="btn btn-primary" type="button">Masuk</button></a>
+                                        @elseif(Auth::user()->role == 'manajer')
+                                            <a href="{{ route('manajer.dashboard') }}"><button class="btn btn-primary" type="button">Masuk</button></a>
+                                        @endif
+                                    @else
+                                        <a href="{{ route('login') }}"><button class="btn btn-primary" type="button">Masuk</button></a>
+                                    @endauth
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Giri - Coffina Shop Bisa Ngopi 2022</div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+{{-- https://fonts.google.com/specimen/Roboto --}}
+{{-- https://www.elegantthemes.com/blog/resources/how-to-use-and-embed-an-icon-font-on-your-website --}}
+{{-- https://cssgradient.io/blog/css-gradient-text/ --}}
+
+{{-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cafe Bisa Ngopi - Landing Page</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets') }}/img/icon1.png" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Cape Bisa Ngopi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menus">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#signup">Masuk</a></li>
+                    @auth()
+                        @if(Auth::user()->role == 'admin')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.registrasi.index') }}">Home</a></li>
+                        @elseif(Auth::user()->role == 'kasir')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('kasir.transaksi.index') }}">Home</a></li>
+                        @elseif(Auth::user()->role == 'manajer')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('manajer.dashboard') }}">Home</a></li>
+                        @endif
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                    @endauth
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>caffena bisa ngopi</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat labore, sint cupiditate distinctio
+                tempora reiciendis.</p>
+                <a class="btn btn-primary" href="#about">Ayo Mulai</a>
+        </div>
+
+    </section>    
+</body>
+</html> --}}
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Cafe Bisa Ngopi | Landing</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -129,4 +358,4 @@
             </div>
         </div>
     </body>
-</html>
+</html> --}}

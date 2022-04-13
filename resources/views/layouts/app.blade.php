@@ -22,9 +22,9 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
-<link rel="icon" type="image/png" href="{{ asset('assets') }}/img/icon1.png">
+<link rel="icon" type="image/png" href="{{ asset('assets') }}/img/icon.png">
 <title>
-{{ $titlePage }} | Cafe Bisa Ngopi
+{{ $titlePage }} | Coffena Shopp
 </title>
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -44,6 +44,7 @@
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/flick/theme.min.css">
+@yield('style')
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -100,7 +101,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ $activePage == 'laporan-manajer' ? 'active bg-gradient-primary' : '' }}" href="">
+                    <a class="nav-link text-white {{ $activePage == 'laporan-manajer' ? 'active bg-gradient-primary' : '' }}" href="{{ route('manajer.laporan') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">summarize</i>
                     </div>

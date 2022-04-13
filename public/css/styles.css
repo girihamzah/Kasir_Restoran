@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800;900&display=swap");
+
+:root {
+    --main-color: #d3ad7f;
+    --black: #13131a;
+    --bg: #010103;
+    --border: 1rem solid rgba(255, 255, 255, 0.3);
+}
+* {
+    font-family: "Roboto" sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+body {
+    background: var(--bg);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 800 !important;
+}
+a {
+    text-decoration: none;
+    transition: all 0.4s ease;
+    font-weight: 800;
+}
+img {
+    width: 75%;
+}
+section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    z-index: 2;
+    position: relative;
+}
+.heading {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    padding-bottom: 3.5rem;
+    font-size: 4rem;
+}
+.heading span {
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.bg-cover {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    padding: 14px 22px;
+    transition: all 0.3s ease;
+}
+.btn-primary {
+    border-radius: 100px;
+    border: none;
+    font-weight: 600;
+}
+.btn:hover {
+    color: #fff;
+    transform: translateY(-5px);
+}
+.navbar {
+    box-shadow: 0 6px 10px rgb(0, 0, 0, 1);
+}
+.about-section {
+    padding-top: 10rem;
+    background: linear-gradient(
+        to bottom,
+        #000 0%,
+        rgba(0, 0, 0, 0.9) 75%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+.text-center {
+    text-align: center !important;
+}
+section {
+    display: block;
+}
+.menu .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+.menu .box-container .box {
+    padding: 2rem;
+    text-align: center;
+    border: var(--border);
+}
+.menu .box-container .box img {
+    height: 10rem;
+    width: 10rem;
+}
+.signup-section {
+    padding: 20rem;
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.5) 75%,
+            #000 100%
+        ),
+        url(../img/intro-1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+.footer {
+    padding: 5rem 0;
+}
